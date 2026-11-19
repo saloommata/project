@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Theme tokens, as "R G B" channel triplets (see tailwind.config.js).
+       Defaults mirror src/config/store.config.ts's Ryvano palette (Ink,
+       Paper, Brass, Brass Deep, Line) so the look is unchanged out of the
+       box; src/context/appcontext.tsx overwrites these at runtime from
+       whatever an admin has saved in Settings. */
+    --color-primary: 134 87 31;    /* #86571F Brass Deep */
+    --color-secondary: 43 28 18;   /* #2B1C12 Ink */
+    --color-accent: 177 121 58;    /* #B1793A Brass */
+    --color-background: 239 233 221; /* #EFE9DD Paper */
+    --color-foreground: 43 28 18;  /* #2B1C12 Ink */
+    --color-muted: 138 122 102;    /* #8A7A66 */
+    --color-border: 211 199 174;   /* #D3C7AE Line */
+    --color-card: 255 255 255;     /* #FFFFFF */
+    --color-success: 75 127 82;    /* #4B7F52 */
+    --color-warning: 177 121 58;   /* #B1793A */
+    --color-error: 162 59 46;      /* #A23B2E */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-foreground;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4,
+  .font-display {
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    font-optical-sizing: auto;
+  }
+
+  .font-mono-label {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    letter-spacing: 0.06em;
+  }
+
+  ::selection {
+    background: rgb(var(--color-accent) / 0.28);
+    color: rgb(var(--color-secondary));
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--color-accent)) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-accent) / 0.6);
+    border-radius: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--color-accent));
+  }
+
+  /* Consistent, visible keyboard-focus ring across the whole site (links,
+     buttons, inputs, etc.) using the current theme's accent color. Only
+     shows for keyboard/programmatic focus, not mouse clicks. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  [dir="ltr"] {
+    direction: ltr;
+  }
+
+  /* Anchor-scroll offset so a jump to #menu/#about/#contact doesn't land
+     underneath the sticky header. */
+  .anchor-offset {
+    scroll-margin-top: 88px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

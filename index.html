@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/logo/ryvano-icon-ink-256.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2B1C12" />
+
+    <!-- Fraunces (display/wordmark), IBM Plex Sans (body/UI), IBM Plex Mono
+         (labels/spec text) — Ryvano's brand typography. Preconnect first for
+         faster first paint. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      The values below are the pre-JS fallback (and what search-engine
+      crawlers/social previews see before hydration). Once the app mounts,
+      src/hooks/usedocumentmeta.ts overwrites all of these from
+      src/config/store.config.ts (or live backend settings), so a new store
+      deployment only needs to edit store.config.ts, not this file.
+    -->
+    <title>Ryvano — Coffee worth the walk</title>
+    <meta name="description" content="Small-batch coffee, fresh pastries, and a quiet room to sit in. Visit Ryvano today." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ryvano — Coffee worth the walk" />
+    <meta property="og:description" content="Small-batch coffee, fresh pastries, and a quiet room to sit in. Visit Ryvano today." />
+    <meta property="og:site_name" content="Ryvano" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
